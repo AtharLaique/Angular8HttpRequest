@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
   onFetchPosts() {
     // Send Http request
+    this.http.get('url')Observable
   }
 
   onClearPosts() {
