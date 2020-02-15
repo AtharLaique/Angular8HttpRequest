@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //Step 0 import http module here
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,9 @@ export class AppComponent implements OnInit {
 
   onFetchPosts() {
     // Send Http request
-    this.http.get("https://ang-http-9c7c1.firebaseio.com/post.json").subscribe(data=>{
+    this.http.get("https://ang-http-9c7c1.firebaseio.com/post.json")
+    .pipe(map())
+    .subscribe(data=>{
       console.log(data)
     })
   }
