@@ -17,10 +17,7 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    this.http.post('https://ang-http-9c7c1.firebaseio.com/posts',postData)
-    .subscribe(res=>{
-      //This subscribe Method is mendatory to send the request 
-    })
+    this.http.post('usrl','data')Observable
   }
 
   onFetchPosts() {
