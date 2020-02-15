@@ -27,7 +27,15 @@ export class AppComponent implements OnInit {
   onFetchPosts() {
     // Send Http request
     this.http.get("https://ang-http-9c7c1.firebaseio.com/post.json")
-    .pipe(map())
+    .pipe(map(res=>{
+      const postArray=[];
+      for (const key in res){
+        if(res.hasOwnProperty(key)){
+          postArray.push({...res[key] , id:key})
+        }
+      }
+      return postArray;
+    }))
     .subscribe(data=>{
       console.log(data)
     })
