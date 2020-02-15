@@ -26,7 +26,9 @@ export class AppComponent implements OnInit {
 
   onFetchPosts() {
     // Send Http request
-    this.http.get('url')Observable
+    this.http.get("https://ang-http-9c7c1.firebaseio.com/post.json").subscribe(data=>{
+      console.log(data)
+    })
   }
 
   onClearPosts() {
