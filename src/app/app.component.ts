@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//Step 0 import http module here
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   loadedPosts = [];
-
+//Step 1 Make object of http module to use in component
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
