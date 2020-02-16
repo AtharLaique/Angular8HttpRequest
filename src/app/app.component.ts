@@ -47,7 +47,11 @@ export class AppComponent implements OnInit {
     })
   }
 
-  onClearPosts() {
+  onClearPosts(id) {
+    console.log(id)
     // Send Http request
+  }
+  onDeletePost(id:string){
+   
   }
 }
