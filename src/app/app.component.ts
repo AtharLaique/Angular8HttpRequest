@@ -11,18 +11,21 @@ import { Post } from './post.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts:Post[] = [];
 //Step 1 Make object of http module to use in component
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onFetchPosts();
+    
+  }
 
-  onCreatePost(postData: { name: string; content: string }) {
+  onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    this.http.post<{ title: string}>("https://ang-http-9c7c1.firebaseio.com/post.json",postData)
+    this.http.post<{ name: string}>("https://ang-http-9c7c1.firebaseio.com/post.json",postData)
     .subscribe(res=>{
       //This subscribe Method is mendatory to send the request
-      console.log(res) 
+     this.onFetchPosts()
     })
   }
 
@@ -39,6 +42,7 @@ export class AppComponent implements OnInit {
       return postArray;
     }))
     .subscribe(data=>{
+      this.loadedPosts=data;
       console.log(data)
     })
   }
