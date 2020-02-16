@@ -52,6 +52,6 @@ export class AppComponent implements OnInit {
     // Send Http request
   }
   onDeletePost(id:string){
-   
+   this.http.delete('url').subscribe()
   }
 }
