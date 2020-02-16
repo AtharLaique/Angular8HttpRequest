@@ -48,10 +48,12 @@ export class AppComponent implements OnInit {
   }
 
   onClearPosts(id) {
-    console.log(id)
-    // Send Http request
+    this.http.delete('https://ang-http-9c7c1.firebaseio.com/post.json')
+    .subscribe((res=>{
+      this.onFetchPosts();
+    }))
   }
   onDeletePost(id:string){
-   this.http.delete('url').subscribe()
+ 
   }
 }
