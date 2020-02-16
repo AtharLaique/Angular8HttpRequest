@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {}
 
-  onCreatePost(postData: { title: string; content: string }) {
+  onCreatePost(postData: { name: string; content: string }) {
     // Send Http request
-    this.http.post("https://ang-http-9c7c1.firebaseio.com/post.json",postData)
+    this.http.post<{ title: string}>("https://ang-http-9c7c1.firebaseio.com/post.json",postData)
     .subscribe(res=>{
       //This subscribe Method is mendatory to send the request
       console.log(res) 
@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
 
   onFetchPosts() {
     // Send Http request
-    this.http.get("https://ang-http-9c7c1.firebaseio.com/post.json")
-    .pipe(map(res=>{
-      const postArray=[];
+    this.http.get<{[key:string]:Post}>("https://ang-http-9c7c1.firebaseio.com/post.json")
+    .pipe(map((res)=>{
+      const postArray:Post[]=[];
       for (const key in res){
         if(res.hasOwnProperty(key)){
           postArray.push({...res[key] , id:key})
